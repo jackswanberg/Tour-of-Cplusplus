@@ -10,7 +10,14 @@ int main()
     }
     std::cout << '\n';
 
-    for(auto x : std::ranges::istream_view<std::complex<double>>(std::cin)) {
+    // for(auto x : std::ranges::istream_view<std::complex<double>>(std::cin)) {
+    //     std::cout << x << ' ';
+    // }
+    // std::cout << '\n';
+
+    auto cplx = std::ranges::istream_view<double>(std::cin);
+    for (auto x : std::ranges::transform_view(cplx, [](auto z){ return z*z;}))
+    {
         std::cout << x << ' ';
     }
     std::cout << '\n';
